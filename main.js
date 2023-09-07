@@ -19,5 +19,4 @@ animateButton(pickColor)
 animateButton(eraser)
 animateButton(rainbow)
 animateButton(canvasSize)
-animateButton(canvas)
 
