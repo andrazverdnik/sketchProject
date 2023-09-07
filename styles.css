@@ -20,6 +20,7 @@ body{
 }
 
 .toolbarButton {
+    text-align: center;
     background-color: #3C6E71;
     border: 0;
     border-radius: 5%;
@@ -62,4 +63,9 @@ body{
 .pixel {
     margin: 0;
     background-color: #d9d9d9;
+}
+
+#colorPicker {
+    width: 75px;
+    height: 75px;
 }

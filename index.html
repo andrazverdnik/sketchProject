@@ -9,10 +9,14 @@
 <body>
     <h1 class="mainTitle">SimpleSketch™</h1>
     <div class="toolbar">
-        <button class="toolbarButton" id="pickColor">Pick color</button>
+        <div class="toolbarButton" id="pickColor">
+            Pick color
+            <input type="color" id="colorPicker">
+        </div>
         <button class="toolbarButton" id="eraser">Eraser</button>
         <button class="toolbarButton" id="rainbow">Rainbow</button>
         <button class="toolbarButton" id="canvasSize">Canvas size</button>
+        <button class="toolbarButton" id="default">Default color</button>
     </div>
     <div class="canvasOutlineBox">
         <div class="canvasOutline">
@@ -20,7 +24,6 @@
     
             </div>
     </div>
-   
     </div>
     <script src="main.js"></script>
 </body>
