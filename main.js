@@ -7,6 +7,8 @@ const canvas = document.getElementById("canvas")
 const colorPicker = document.getElementById("colorPicker")
 
 let color = "#000000"
+let rainbowStatus = false;
+
 
 
 function animateButton(element, time = 250){
@@ -21,9 +23,20 @@ function animateButton(element, time = 250){
     })
 }
 
+function randomColor(){
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + n.slice(0, 6);
+  };
+
 function pixelHover(element){
     element.addEventListener("mouseover", ()=>{
-        element.style.backgroundColor = color;
+        if (rainbowStatus == false){
+            element.style.backgroundColor = color;
+        }else {
+            console.log(randomColor())
+            element.style.backgroundColor = randomColor()
+        }
+        
     })
 }
 
@@ -62,9 +75,21 @@ eraser.addEventListener("click", ()=> {
 defaultColor.addEventListener("click", ()=> {
     color = "#000000"
 })
+
+rainbow.addEventListener('click', ()=> {
+    if (rainbowStatus == false) {
+        rainbow.classList.add("rainbowButtonPressed")
+        rainbowStatus = true
+    } else {
+        rainbow.classList.remove("rainbowButtonPressed")
+        rainbowStatus = false
+    }
+})
+
 colorPicker.addEventListener("input", ()=> {
     color = colorPicker.value
 })
+
 
 animateButton(eraser)
 animateButton(rainbow)
