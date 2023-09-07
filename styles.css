@@ -46,7 +46,14 @@ body{
 }
 
 .canvas {
+    display: grid;
     background-color: #d9d9d9;
+    gap: 0px;
     width: 700px;
     height: 700px;
+}
+
+.pixel {
+    margin: 0;
+    background-color: white;
 }
