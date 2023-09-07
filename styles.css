@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.mainTitle{
+    text-align: center;
+    color: #353535;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+.toolbar {
+    display: flex;
+    background-color: #d9d9d9;
+    margin-top: 25px;
+    height: 100px;
+    justify-content: space-around;
+}
+
+.toolbarButton {
+    background-color: #3C6E71;
+    border: 0;
+    border-radius: 5%;
+    width: 100px;
+}
+
+.canvasOutline{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #353535;
+    width: 750px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 750px;
+}
+
+.canvas {
+    background-color: #d9d9d9;
+    width: 700px;
+    height: 700px;
+}
