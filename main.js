@@ -2,6 +2,7 @@ const pickColor = document.getElementById("pickColor")
 const eraser = document.getElementById("eraser")
 const rainbow = document.getElementById("rainbow")
 const canvasSize = document.getElementById("canvasSize")
+const canvas = document.getElementById("canvas")
 
 function animateButton(element, time = 250){
     element.addEventListener("click", ()=> {
@@ -18,5 +19,5 @@ animateButton(pickColor)
 animateButton(eraser)
 animateButton(rainbow)
 animateButton(canvasSize)
-
+animateButton(canvas)
 
