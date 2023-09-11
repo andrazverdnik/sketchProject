@@ -8,6 +8,7 @@ const colorPicker = document.getElementById("colorPicker")
 
 let color = "#000000"
 let rainbowStatus = false;
+let mousedown = false;
 
 
 
@@ -28,15 +29,32 @@ function randomColor(){
     return '#' + n.slice(0, 6);
   };
 
+window.onmousedown = ()=> {
+    mousedown = true;
+}
+window.onmouseup = ()=> {
+    mousedown = false
+}
 function pixelHover(element){
     element.addEventListener("mouseover", ()=>{
-        if (rainbowStatus == false){
-            element.style.backgroundColor = color;
-        }else {
-            console.log(randomColor())
-            element.style.backgroundColor = randomColor()
+        if(mousedown == true){
+            console.log(mousedown)
+            if (rainbowStatus == false){
+                element.style.backgroundColor = color;
+            }else {
+                console.log(randomColor())
+                element.style.backgroundColor = randomColor()
+            }
         }
-        
+        element.addEventListener("mousedown", ()=>{
+            if (rainbowStatus == false){
+                element.style.backgroundColor = color;
+            }else {
+                console.log(randomColor())
+                element.style.backgroundColor = randomColor()
+            }
+        })
+            
     })
 }
 
