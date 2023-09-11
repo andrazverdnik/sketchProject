@@ -5,12 +5,25 @@ const defaultColor = document.getElementById("default")
 const canvasSize = document.getElementById("canvasSize")
 const canvas = document.getElementById("canvas")
 const colorPicker = document.getElementById("colorPicker")
+const eColor = "#d9d9d9"
+const dColor = "#000000"
 
-let color = "#000000"
-let rainbowStatus = false;
+
+
+let pickerColor = "#000000"
 let mousedown = false;
+let eraserStatus = false;
+let rainbowStatus = false;
+let dcolorStatus = true;
+let pickColorStatus = false;
 
 
+
+function initiate(){
+    removeAllStates()
+    dcolorStatus = true
+    defaultColor.classList.add("statusButtonPressed")
+}
 
 function animateButton(element, time = 250){
     element.addEventListener("click", ()=> {
@@ -24,10 +37,37 @@ function animateButton(element, time = 250){
     })
 }
 
+function removeAllStates(){
+    eraserStatus = false;
+    rainbowStatus = false;
+    dcolorStatus = false;
+    pickColorStatus = false;
+    eraser.classList.remove("statusButtonPressed")
+    rainbow.classList.remove("statusButtonPressed")
+    defaultColor.classList.remove("statusButtonPressed")
+    pickColor.classList.remove("statusButtonPressed")
+}
+
 function randomColor(){
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return '#' + n.slice(0, 6);
   };
+
+function buttonStatusCheck(element){
+    console.log(eraserStatus)
+    console.log(rainbowStatus)
+    console.log(dcolorStatus)
+    console.log(pickColorStatus)
+    if (eraserStatus == true){
+        element.style.backgroundColor = eColor;
+    } else if (rainbowStatus == true){
+        element.style.backgroundColor = randomColor()
+    } else if (dcolorStatus == true){
+        element.style.backgroundColor = dColor;
+    } else if (pickColorStatus == true){
+        element.style.backgroundColor = pickerColor;
+    }
+}
 
 window.onmousedown = ()=> {
     mousedown = true;
@@ -39,20 +79,10 @@ function pixelHover(element){
     element.addEventListener("mouseover", ()=>{
         if(mousedown == true){
             console.log(mousedown)
-            if (rainbowStatus == false){
-                element.style.backgroundColor = color;
-            }else {
-                console.log(randomColor())
-                element.style.backgroundColor = randomColor()
-            }
+            buttonStatusCheck(element)
         }
         element.addEventListener("mousedown", ()=>{
-            if (rainbowStatus == false){
-                element.style.backgroundColor = color;
-            }else {
-                console.log(randomColor())
-                element.style.backgroundColor = randomColor()
-            }
+           buttonStatusCheck(element)
         })
             
     })
@@ -78,6 +108,7 @@ function createGrid(length){
 
 function destroyGrid(){
     canvas.innerHTML = ''
+    initiate()
 }
 
 
@@ -88,30 +119,35 @@ canvasSize.addEventListener("click", ()=> {
     createGrid(length)
 })
 eraser.addEventListener("click", ()=> {
-    color = "#d9d9d9"
+    removeAllStates()
+    eraser.classList.add("statusButtonPressed")
+    eraserStatus = true
+    
 })
 defaultColor.addEventListener("click", ()=> {
-    color = "#000000"
+    removeAllStates()
+    defaultColor.classList.add("statusButtonPressed")
+    dcolorStatus = true
 })
 
 rainbow.addEventListener('click', ()=> {
-    if (rainbowStatus == false) {
-        rainbow.classList.add("rainbowButtonPressed")
-        rainbowStatus = true
-    } else {
-        rainbow.classList.remove("rainbowButtonPressed")
-        rainbowStatus = false
-    }
+        removeAllStates()
+        rainbow.classList.add("statusButtonPressed")
+        rainbowStatus = true;
 })
 
 colorPicker.addEventListener("input", ()=> {
-    color = colorPicker.value
+    pickerColor = colorPicker.value
 })
 
 
-animateButton(eraser)
-animateButton(rainbow)
+pickColor.addEventListener("click", () =>{
+    removeAllStates()
+    pickColor.classList.add("statusButtonPressed")
+    pickColorStatus = true
+})
+
 animateButton(canvasSize)
-animateButton(defaultColor)
+initiate()
 createGrid(16)
 

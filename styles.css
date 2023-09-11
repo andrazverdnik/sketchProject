@@ -28,13 +28,14 @@ body{
 }
 
 .toolbarButtonPressed {
+    text-align: center;
     background-color: #3C6E71;
     border: 0;
     border-radius: 5%;
     width: 120px;
 }
 
-.rainbowButtonPressed {
+.statusButtonPressed {
     background-color: red;
     border: 0;
     border-radius: 5%;
@@ -77,3 +78,4 @@ body{
     width: 75px;
     height: 75px;
 }
+
