@@ -75,6 +75,12 @@ window.onmousedown = ()=> {
 window.onmouseup = ()=> {
     mousedown = false
 }
+
+window.ontouchmove = (e)=> {
+    buttonStatusCheck(document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY))
+}
+
+
 function pixelHover(element){
     element.addEventListener("mouseover", ()=>{
         if(mousedown == true){
